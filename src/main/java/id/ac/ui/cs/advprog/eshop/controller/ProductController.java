@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/products")
+@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
@@ -19,7 +19,7 @@ public class ProductController {
     @GetMapping("/create")
     public String createProductPage(Model model) {
         Product product = new Product();
-        model.addAttribute("products", product);
+        model.addAttribute("product", product);
         return "createProduct";
     }
 
