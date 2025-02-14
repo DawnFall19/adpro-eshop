@@ -11,11 +11,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ExtendWith(SeleniumJupiter.class)
-class HomePageFunctionalTest {
+class CreateProductFunctionalTest {
     @LocalServerPort
     private int serverPort;
 
@@ -30,24 +31,21 @@ class HomePageFunctionalTest {
     }
 
     @Test
-    void pageTitle_isCorrect(ChromeDriver driver) throws Exception {
-        driver.get(baseUrl);
-        String pageTitle = driver.getTitle();
-        assertEquals("ADV Shop", pageTitle);
-    }
-
-    @Test
-    void welcomeMessage_isCorrect(ChromeDriver driver) throws Exception {
-        driver.get(baseUrl);
-        String welcomeMessage = driver.findElement(By.tagName("h3")).getText();
-        assertEquals("Welcome", welcomeMessage);
-    }
-
-    @Test
-    void getStartedButton_isCorrect(ChromeDriver driver) throws Exception {
-        driver.get(baseUrl);
-        driver.findElement(By.linkText("Get Started!")).click();
+    void createButton_isCorrect(ChromeDriver driver) throws Exception {
+        driver.get(baseUrl + "/product/list");
+        driver.findElement(By.linkText("Create Product")).click();
         String currentUrl = driver.getCurrentUrl();
-        assertEquals(baseUrl + "/product/list", currentUrl);
+        assertEquals(baseUrl + "/product/create", currentUrl);
+    }
+
+    @Test
+    void createProduct_isCorrect(ChromeDriver driver) throws Exception {
+        driver.get(baseUrl + "/product/list");
+        driver.findElement(By.linkText("Create Product")).click();
+        driver.findElement(By.id("nameInput")).sendKeys("Sampo Cap Bambang");
+        driver.findElement(By.id("quantityInput")).sendKeys("100");
+        driver.findElement(By.cssSelector("button[type='submit']")).click();
+        boolean isSuccess = driver.findElement(By.xpath("//*[contains(text(), 'Sampo Cap Bambang')]")).isDisplayed();
+        assertTrue(isSuccess);
     }
 }
