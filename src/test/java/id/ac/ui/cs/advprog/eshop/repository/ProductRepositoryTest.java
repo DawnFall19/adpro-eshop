@@ -33,7 +33,6 @@ class ProductRepositoryTest {
         assertEquals(product.getProductId(), savedProduct.getProductId());
         assertEquals(product.getProductName(), savedProduct.getProductName());
         assertEquals(product.getProductQuantity(), savedProduct.getProductQuantity());
-
         Product product2 = new Product();
         product2.setProductName("Sampo Cap Usep");
         product2.setProductQuantity(50);
