@@ -28,3 +28,13 @@ Saya merasa kode saya kurang banyak melakukan validasi yang dapat sangat berpeng
    Cara untuk memastikan bahwa _unit test_ sudah cukup adalah dengan memikirkan setiap kasus dan menghitung apakah setiap kasus tersebut sudah ditangani oleh setidaknya satu _unit test_ atau tidak. Hal ini membutuhkan kalkulasi, simulasi, dan penalaran kita.
    Jika memiliki 100% _code coverage_, hal tersebut belum berarti bahwa program kita bebas dari _bug_. Hal ini dikarenakan _code coverage_ hanya menghitung apakah sebuah fungsi atau program lainnya sudah masuk dalam tes. Namun belum tentu tes yang dibuat cukup kuat untuk mencakup kasus ujung (_edge case_). Misalnya ketika terdapat sebuah tombol, kita membuat tes untuk menekan tombol tersebut. Namun terkadang terdapat kasus ujung misalnya bagaimana jika tombol ditahan, atau yang lainnya.
 2. Memiliki variabel atau _setup_ yang sama akan sangat boros jika dibuat kembali. Hal ini sangat berkaitan dengan salah satu prinsip _clean code_ yang tidak ingin ada _redundancy_, salah satunya adalah kode yang berulang-ulang. Sehingga sebaiknya dibuat pada berkas yang sama. Selain itu, kode yang berulang juga dapat menyulitkan ketika perlu melakukan _maintenance_ karena kita akan melihat kode yang sama pada beberapa berkas.
+
+## Modul 2
+### Refleksi
+1. - Repeated Code
+     Saya telah memperbaiki kode-kode berulang, khususnya pada bagian unit tests, dimana saya menghilangkan tes yang sudah ada sehingga setiap tes yang tersisa bersifat penting dan unik. Saya dapat memperbaiki hal ini dengan memeriksa satu per satu tes yang dibuat tentang informasi baru yang dibawakan oleh tes tersebut.
+   - Test Coverage
+     Saya telah menambahkan unit tests yang menaikkan code coverage saya menjadi 100% pada setiap bagian kode. Saya dapat memperbaiki hal ini dengan mencatat bagian yang belum dites dan memeriksa melalui jacoco report.
+2. Ya, menurut saya _workflows_ saya saat ini sudah memenuhi definisi CI/CD. Hal ini dikarenakan setiap commit yang saya buat akan memicu proses _build_ dan pengujian yang terjadi secara otomatis, sehingga memastikan bahwa perubahan kode dapat diperiksa dan divalidasi segera setelah dikirim. CI akan menjalankan semua unit test yang sudah saya buat agar memastikan kode baru tersebut sesuai dengan maksud dan tujuan pembuatannya. Selain itu, mekanisme CD secara otomatis menyiarkan langsung perubahan yang saya buat secara _real-time_ pada situs aplikasi saya. Semua ini terjadi secara otomatis sehingga terjadi secara _continuous_.
+
+Link Aplikasi: https://adpro-eshop-dawnfall19.koyeb.app/
