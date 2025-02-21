@@ -9,8 +9,7 @@ plugins {
 sonar {
     properties {
         property("sonar.projectKey", "DawnFall19_adpro-eshop")
-        property("sonar.organization", "dawnfall19")
-        property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.projectName", "adpro-eshop")
     }
 }
 
