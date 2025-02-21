@@ -10,6 +10,7 @@ class EshopApplicationTests {
 
     @Test
     void contextLoads() {
+        // Even though it appears empty, keeping contextLoads() is important for maintaining a robust test suite.
     }
 
     @Test
