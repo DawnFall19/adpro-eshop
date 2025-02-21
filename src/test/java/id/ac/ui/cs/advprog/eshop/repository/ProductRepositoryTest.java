@@ -16,6 +16,11 @@ class ProductRepositoryTest {
     @InjectMocks
     ProductRepository productRepository;
 
+    @BeforeEach
+    void setUp() {
+        // Placeholder in case this function is needed in the future
+    }
+
     @Test
     void testCreateAndFind() {
         Product product = new Product();
