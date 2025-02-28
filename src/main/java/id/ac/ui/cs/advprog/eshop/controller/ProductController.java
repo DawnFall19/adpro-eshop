@@ -14,50 +14,51 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
 
-    public ProductController() {
+    private final ProductService service;
+    private final String modelAttributeName = "product";
+    private final String backToProductList = "redirect:list";
 
+    public ProductController(ProductService service) {
+        this.service = service;
     }
-
-    @Autowired
-    private ProductService service;
 
     @GetMapping("/create")
     public String createProductPage(Model model) {
         Product product = new Product();
-        model.addAttribute("product", product);
+        model.addAttribute(modelAttributeName, product);
         return "CreateProduct";
     }
 
     @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product) {
         service.create(product);
-        return "redirect:list";
+        return backToProductList;
     }
 
     @GetMapping("/edit/{id}")
     public String editProductPage(@PathVariable("id") String id, Model model) {
         Product product = service.findByID(id);
-        model.addAttribute("product", product);
+        model.addAttribute(modelAttributeName, product);
         return "EditProduct";
     }
 
     @PostMapping("/edit")
     public String editProductPost(@ModelAttribute Product product) {
         service.edit(product.getProductId(), product.getProductName(), product.getProductQuantity());
-        return "redirect:list";
+        return backToProductList;
     }
 
     @GetMapping("/delete/{id}")
     public String deleteProductPage(@PathVariable("id") String id, Model model) {
         Product product = service.findByID(id);
-        model.addAttribute("product", product);
+        model.addAttribute(modelAttributeName, product);
         return "DeleteProduct";
     }
 
     @PostMapping("/delete")
     public String deleteProductPost(@RequestParam("productId") String id) {
         service.delete(id);
-        return "redirect:list";
+        return backToProductList;
     }
 
     @GetMapping("/list")
@@ -75,8 +76,9 @@ class CarController extends ProductController {
     private CarServiceImpl carService;
 
     @Autowired
-    public CarController(ProductService productService) {
-        super();
+    public CarController(ProductService productService, CarServiceImpl carService) {
+        super(productService);
+        this.carService = carService;
     }
 
     @GetMapping("/createCar")
