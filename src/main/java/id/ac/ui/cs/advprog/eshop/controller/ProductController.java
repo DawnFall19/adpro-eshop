@@ -14,6 +14,10 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
 
+    public ProductController() {
+
+    }
+
     @Autowired
     private ProductService service;
 
@@ -69,6 +73,11 @@ public class ProductController {
 class CarController extends ProductController {
     @Autowired
     private CarServiceImpl carService;
+
+    @Autowired
+    public CarController(ProductService productService) {
+        super();
+    }
 
     @GetMapping("/createCar")
     public String createCarPage(Model model) {
