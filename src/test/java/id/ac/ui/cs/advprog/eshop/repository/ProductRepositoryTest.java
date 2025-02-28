@@ -18,6 +18,7 @@ class ProductRepositoryTest {
 
     @BeforeEach
     void setUp() {
+        // Placeholder in case this function is needed in the future
     }
 
     @Test
