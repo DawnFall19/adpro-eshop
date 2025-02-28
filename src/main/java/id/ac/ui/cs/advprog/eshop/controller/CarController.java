@@ -14,7 +14,7 @@ public class CarController {
 
     private final CarService carService;
     private final String modelAttributeName = "car";
-    private final String backToProductList = "redirect:/car/listCar";
+    private final String backToProductList = "redirect:listCar";
 
     public CarController(CarService carService) {
         this.carService = carService;

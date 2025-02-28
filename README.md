@@ -38,3 +38,16 @@ Saya merasa kode saya kurang banyak melakukan validasi yang dapat sangat berpeng
 2. Ya, menurut saya _workflows_ saya saat ini sudah memenuhi definisi CI/CD. Hal ini dikarenakan setiap commit yang saya buat akan memicu proses _build_ dan pengujian yang terjadi secara otomatis, sehingga memastikan bahwa perubahan kode dapat diperiksa dan divalidasi segera setelah dikirim. CI akan menjalankan semua unit test yang sudah saya buat agar memastikan kode baru tersebut sesuai dengan maksud dan tujuan pembuatannya. Selain itu, mekanisme CD secara otomatis menyiarkan langsung perubahan yang saya buat secara _real-time_ pada situs aplikasi saya. Semua ini terjadi secara otomatis sehingga terjadi secara _continuous_.
 
 Link Aplikasi: https://adpro-eshop-dawnfall19.koyeb.app/
+
+## Modul 3
+### SOLID Principle
+- SRP
+  SRP adalah sebuah _principle_ dimana sebuah _class_ harusnya hanya memiliki satu tanggung jawab. Implementasinya adalah pemisahan ProductController dengan CarController yang sebelumnya menjadi satu.
+- OCP
+  OCP adalah sebuah _principle_ dimana sebuah _class_ harus tertutup untuk modifikasi namun terbuka untuk ekspansi atau perluasan. Implementasinya adalah penggunaan _interface_ sehingga dapat menambahkan fitur baru tanpa mengubah kode yang sudah ada.
+- LSP
+  LSP adalah sebuah _principle_ dimana objek dari _subclass_ harus dapat menggantikan objek dari _superclass_ tanpa menyebabkan kesalahan pada program. Implementasinya adalah pemisahan ProductController dengan CarController. Karena jika CarController masih menjadi _subclass_ dari ProductController maka LSP belum diterapkan karena jika objek ProductController diganti dengan objek CarController akan menyebabkan kesalahan pada program.
+- ISP
+  ISP adalah sebuah _principle_ dimana klien seharusnya tidak perlu bergantung pada keseluruhan implementasi _interface_, melainkan cukup bagian dari _interface_ yang dibutuhkan. Implementasinya adalah dengan pembuatan CarService yang merupakan _interface_ terpisah dari ProductService. Hal ini memastikan bahwa setiap _interface_ hanya menyediakan fungsi yang dibutuhkan untuk kelas itu, CarService hanya menyediakan fungsi yang berkaitan dengan model Car, dan ProductService hanya menyediakan fungsi yang berkaitan dengan model Product.
+- DIP
+  DIP adalah sebuah _principle_ dimana semua modul, baik _high-level_ maupun _low-level_, harus bergantung pada abstraksi. Implementasinya adalah perubahan CarController yang sebelumnya menggunakan CarServiceImpl menjadi CarService sehingga bagian Service dapat diganti tanpa mengganggu fungsionalitas dari Controller.

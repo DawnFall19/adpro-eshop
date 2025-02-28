@@ -13,7 +13,7 @@ public class ProductController {
 
     private final ProductService service;
     private final String modelAttributeName = "product";
-    private final String backToProductList = "redirect:/product/list";
+    private final String backToProductList = "redirect:list";
 
     public ProductController(ProductService service) {
         this.service = service;
