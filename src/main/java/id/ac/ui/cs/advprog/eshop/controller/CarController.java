@@ -5,7 +5,6 @@ import id.ac.ui.cs.advprog.eshop.service.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -13,8 +12,8 @@ import java.util.List;
 public class CarController {
 
     private final CarService carService;
-    private final String modelAttributeName = "car";
-    private final String backToProductList = "redirect:listCar";
+    private static final String modelAttributeName = "car";
+    private static final String backToProductList = "redirect:listCar";
 
     public CarController(CarService carService) {
         this.carService = carService;
@@ -49,7 +48,6 @@ public class CarController {
 
     @PostMapping("/editCar")
     public String editCarPost(@ModelAttribute Car car) {
-        System.out.println(car.getCarId());
         carService.update(car.getCarId(), car);
         return backToProductList;
     }
