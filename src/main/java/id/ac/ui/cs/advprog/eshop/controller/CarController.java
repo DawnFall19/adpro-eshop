@@ -12,8 +12,8 @@ import java.util.List;
 public class CarController {
 
     private final CarService carService;
-    private static final String modelAttributeName = "car";
-    private static final String backToProductList = "redirect:listCar";
+    private static final String MODEL_ATTRIBUTE_NAME = "car";
+    private static final String BACK_TO_PRODUCT_LIST = "redirect:listCar";
 
     public CarController(CarService carService) {
         this.carService = carService;
@@ -22,14 +22,14 @@ public class CarController {
     @GetMapping("/createCar")
     public String createCarPage(Model model) {
         Car car = new Car();
-        model.addAttribute(modelAttributeName, car);
+        model.addAttribute(MODEL_ATTRIBUTE_NAME, car);
         return "CreateCar";
     }
 
     @PostMapping("/createCar")
     public String createCarPost(@ModelAttribute Car car) {
         carService.create(car);
-        return backToProductList;
+        return BACK_TO_PRODUCT_LIST;
     }
 
     @GetMapping("/listCar")
@@ -42,19 +42,19 @@ public class CarController {
     @GetMapping("/editCar/{carId}")
     public String editCarPage(@PathVariable String carId, Model model) {
         Car car = carService.findById(carId);
-        model.addAttribute(modelAttributeName, car);
+        model.addAttribute(MODEL_ATTRIBUTE_NAME, car);
         return "EditCar";
     }
 
     @PostMapping("/editCar")
     public String editCarPost(@ModelAttribute Car car) {
         carService.update(car.getCarId(), car);
-        return backToProductList;
+        return BACK_TO_PRODUCT_LIST;
     }
 
     @PostMapping("/deleteCar")
     public String deleteCar(@RequestParam("carId") String carId) {
         carService.deleteCarById(carId);
-        return backToProductList;
+        return BACK_TO_PRODUCT_LIST;
     }
 }
