@@ -12,8 +12,8 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService service;
-    private final String modelAttributeName = "product";
-    private final String backToProductList = "redirect:list";
+    private static final String modelAttributeName = "product";
+    private static final String backToProductList = "redirect:list";
 
     public ProductController(ProductService service) {
         this.service = service;
