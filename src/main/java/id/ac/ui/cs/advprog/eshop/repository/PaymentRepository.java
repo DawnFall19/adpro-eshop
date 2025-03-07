@@ -7,21 +7,32 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public class PaymentRepository {
     private Map<Payment, Order> paymentData = new HashMap<>();
     private List<Payment> payments = new ArrayList<>();
-    public Payment addPayment(Payment payment) {
-        return null;
+    public Payment addPayment(Order order, String method, Map<String, String> paymentData) {
+        String id = UUID.randomUUID().toString();
+        Payment payment = new Payment(id, method, paymentData);
+        this.paymentData.put(payment, order);
+        this.payments.add(payment);
+        return payment;
     }
     public Payment setStatus(Payment payment, String status) {
+        payment.setStatus(status);
+        return payment;
+    }
+    public Payment getPayment(String paymentId) {
+        for (Payment payment : payments) {
+            if (payment.getId().equals(paymentId)) {
+                return payment;
+            }
+        }
         return null;
     }
-    public Payment getPayment(Payment payment) {
-        return null;
-    }
-    public List<Payment> getPayments() {
-        return null;
+    public List<Payment> getAllPayments() {
+        return this.payments;
     }
 }
