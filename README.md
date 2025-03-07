@@ -56,3 +56,23 @@ Link Aplikasi: https://adpro-eshop-dawnfall19.koyeb.app/
 1. Saya mengimplementasikan SOLID principles yang terdiri atas SRP, OCP, LSP, ISP, dan DIP pada kode saya.
 2. Keuntungan dalam mengimplementasikan SOLID Principles adalah kode menjadi lebih mudah dikembangkan dan dipelihara. Contohnya adalah jika sebuah situs memiliki fitur pembayaran, dan pengembang situs ingin menambahkan metode pembayaran baru. Pengembang cukup mengimplementasikan _class_ baru dengan _interface_ yang sudah ada, sehingga memastikan kode pada _class_ metode pembayaran lain tidak perlu diubah.
 3. Kerugian dalam tidak mengimplementasikan SOLID Principles adalah kode menjadi banyak tercampur dan sulit diidentifikasi. Contohnya adalah jika terdapat beberapa _class_ yang saling bergantungan sehingga ketika kode di salah satu _class_ diubah maka _class_ yang lain juga memerlukan penyesuaian yang seharusnya bisa dihindari jika mengimplementasikan SOLID Principles.
+
+## Modul 4
+### Refleksi
+1. - Correctness
+     Tes yang saya buat sudah menunjukkan dan memastikan ide program benar dan program sudah berjalan sesuai yang diharapkan
+   - Clean and maintainable code
+     Tes yang saya buat sudah memotong setiap kode dan mengecek setiap bagiannya, sehingga kode yang ditambahkan pada suatu waktu bersifat kecil dan penting sehingga kode terlihat bersih dan lebih mudah dipelihara.
+   - Productive workflow
+     Proses yang saya lakukan sudah menggunakan _The Red-Green-Refactor Cycle_ dimana saya membuat tes yang pada awalnya pasti gagal karena belum diimplementasikan (red), lalu membuat implementasi untuk menyukseskan tes tersebut (green), dan setelah itu memperbaiki implementasi dan merapikan (refactor). Proses ini sangatlah membantu dalam mendorong saya dan memberikan arah pengembangan program.
+2. F.I.R.S.T. Principle adalah sebuah prinsip yang terdiri atas 5 singkatan untuk setiap abjad, yaitu:
+   - Fast
+     Setiap tes yang dibuat berjalan dalam waktu yang cepat karena kompleksitas yang dipastikan kecil.
+   - Independent
+     Setiap tes yang dibuat dapat berjalan tanpa memerlukan tes lain sehingga tidak ada kebergantungan. Hal ini membuat setiap tes dapat berjalan sendiri bahkan jika tes lainnya dihilangkan.
+   - Repeatable
+     Setiap tes yang dibuat tidak bergantung pada sebuah variabel yang dinamis seperti waktu saat ini atau berapa kali tes dijalankan, sehingga selama tes dan kode yang dites tidak berubah, maka hasil dari setiap tes dipastikan sama.
+   - Self-Validating
+     Setiap tes yang dibuat telah menggunakan fitur assertions, sehingga pengembang dapat melihat hasil kelulusan dari tes tanpa perlu melihat keluaran yang diberikan sama sekali.
+   - Timely
+     Setiap tes dibuat sebelum kode dikembangkan. Hal ini diyakinkan karena saya menggunakan _The Red-Green-Refactor Cycle_ yang memerlukan pembuatan tes di awal, meskipun sudah dapat dipastikan akan gagal karena belum adanya implementasi.
