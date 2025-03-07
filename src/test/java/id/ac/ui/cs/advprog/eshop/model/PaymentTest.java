@@ -40,6 +40,28 @@ class PaymentTest {
     }
 
     @Test
+    void testCreateBankTransferPaymentWithValidBankTransfer() {
+        paymentData.put("bankName", "BCU");
+        paymentData.put("referenceCode", "BCU-TRX-1234");
+        Payment payment = new Payment("ba2dc35b-ef87-478c-bbee-8b58f1503bf5", "BANK_TRANSFER", paymentData);
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
+    }
+
+    @Test
+    void testCreateBankTransferPaymentWithNoReferenceCode() {
+        paymentData.put("bankName", "BCU");
+        Payment payment1 = new Payment("ba2dc35b-ef87-478c-bbee-8b58f1503bf5", "BANK_TRANSFER", paymentData);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment1.getStatus());
+    }
+
+    @Test
+    void testCreateBankTransferPaymentWithNoBankName() {
+        paymentData.put("referenceCode", "BCU-TRX-1234");
+        Payment payment1 = new Payment("ba2dc35b-ef87-478c-bbee-8b58f1503bf5", "BANK_TRANSFER", paymentData);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment1.getStatus());
+    }
+
+    @Test
     void testSetStatusToSuccess() {
         paymentData.put("voucherCode", "ESHOP1234ABC567");
         Payment payment1 = new Payment("6fb769d7-6d76-433a-8f71-df8f5aa7715c", "VOUCHER", paymentData);
