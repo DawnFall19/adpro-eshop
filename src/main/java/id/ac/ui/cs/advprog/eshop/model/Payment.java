@@ -1,13 +1,11 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
 import enums.PaymentStatus;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Map;
 
-@Builder
 @Getter
 @Setter
 class Payment {
@@ -24,7 +22,7 @@ class Payment {
             if (isValid(paymentData)) {
                 this.status = PaymentStatus.SUCCESS.getValue();
             } else {
-                this.status = PaymentStatus.FAILED.getValue();
+                this.status = PaymentStatus.REJECTED.getValue();
             }
         }
     }

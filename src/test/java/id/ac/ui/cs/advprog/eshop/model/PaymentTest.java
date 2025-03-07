@@ -49,7 +49,7 @@ class PaymentTest {
         paymentData.put("voucherCode", "ESHOP1234ABC5678");
         Payment payment2 = new Payment("8af6d025-5c22-4f70-a6c8-9d4be621f9f5", "VOUCHER", paymentData);
         assertEquals(PaymentStatus.SUCCESS.getValue(), payment2.getStatus());
-        payment2.setStatus("FAILED");
-        assertEquals(PaymentStatus.FAILED.getValue(), payment2.getStatus());
+        payment2.setStatus("REJECTED");
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment2.getStatus());
     }
 }
