@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Getter
 @Setter
-class Payment {
+public class Payment {
     private String id;
     private String method;
     private String status;
