@@ -21,7 +21,13 @@ public class PaymentRepository {
         return payment;
     }
     public Payment setStatus(Payment payment, String status) {
-        payment.setStatus(status);
+        for (Payment pay : payments) {
+            if (pay.getId().equals(payment.getId())) {
+                pay.setStatus(status);
+                Order order = this.paymentData.get(payment);
+                order.setStatus(status);
+            }
+        }
         return payment;
     }
     public Payment getPayment(String paymentId) {
