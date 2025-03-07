@@ -19,7 +19,13 @@ class Payment {
         this.method = method;
         this.paymentData = paymentData;
         if (method.equals("VOUCHER")) {
-            if (isValid(paymentData)) {
+            if (isVoucherValid(paymentData)) {
+                this.status = PaymentStatus.SUCCESS.getValue();
+            } else {
+                this.status = PaymentStatus.REJECTED.getValue();
+            }
+        } else {
+            if (isBankTransferValid(paymentData)) {
                 this.status = PaymentStatus.SUCCESS.getValue();
             } else {
                 this.status = PaymentStatus.REJECTED.getValue();
@@ -27,7 +33,7 @@ class Payment {
         }
     }
 
-    private boolean isValid(Map<String, String> paymentData) {
+    private boolean isVoucherValid(Map<String, String> paymentData) {
         String voucherString = paymentData.get("voucherCode");
         return voucherString != null && voucherString.length() == 16 && voucherString.startsWith("ESHOP") && countNumerical(voucherString) == 8;
     }
@@ -41,6 +47,12 @@ class Payment {
             }
         }
         return cnt;
+    }
+
+    private boolean isBankTransferValid(Map<String, String> paymentData) {
+        String bankNameString = paymentData.get("bankName");
+        String referenceCodeString = paymentData.get("referenceCode");
+        return bankNameString != null && referenceCodeString != null && !bankNameString.isEmpty() && !referenceCodeString.isEmpty();
     }
 
     public void setStatus(String status) {
