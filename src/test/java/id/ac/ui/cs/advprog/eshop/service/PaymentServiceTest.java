@@ -54,7 +54,7 @@ class PaymentServiceTest {
         paymentData.put("voucherCode", "ESHOP1234ABC5678");
         Payment payment = paymentService.addPayment(order, "VOUCHER", paymentData);
         assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
-        Payment result = paymentService.setStatus(payment.getId(), PaymentStatus.REJECTED.getValue());
+        Payment result = paymentService.setStatus(payment, PaymentStatus.REJECTED.getValue());
         assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 }
