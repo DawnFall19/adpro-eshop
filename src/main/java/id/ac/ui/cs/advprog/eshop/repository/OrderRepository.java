@@ -30,7 +30,7 @@ public class OrderRepository {
         }
         return null;
     }
-    public List <Order> findAllByAuthor(String author) {
+    public List<Order> findAllByAuthor(String author) {
         List<Order> result = new ArrayList<>();
         for (Order savedOrder : orderData) {
             if (savedOrder.getAuthor().equals(author)) {
